@@ -57,9 +57,7 @@ class GPRM:
         for i in range(2, n):
             newRow = [-zOne(i), 1]
             B = np.vstack([B, newRow])
-        #print("B is ", B)
         Y = np.array(dataList[1:])
-        #print("Y is ", Y)
         a, b = self.leastSquare(B, Y)
         if self.errorPredict == 0:
             self.errorPredict += 0.5 * a
@@ -67,23 +65,13 @@ class GPRM:
 
     def predictWithRM(self):
         d = self.predictionData[:self.windowsize]
-        # print("length of prediction data is ", len(self.predictionData))
 
         for k in range(self.targetYear - self.year):
-            # d = self.predictionData[k-3 : k+1]
-            # print("d is ", d)
             for i in range(len(d)):
                 if d[i] == 0:
                     d[i] = 0.01
             predicated = self.predictWithoutRM(d, self.windowsize) - self.errorPredict
-            # if self.predictionData[k + 1] == 0:
-            #    self.predictionData[k + 1] = 0.01
-            # self.mape += abs(predicated - self.predictionData[k + 1]) / self.predictionData[k + 1]
-            # print("predicated is ", predicated, " the corresponding is ", self.predictionData[k + 1])
-            # print("the first one should be 0.0575", self.mape)
-            d.append(predicated)
             self.year += 1
-            # d.append(self.predictionData[k+1])
             d = d[1:]
 
         if self.year == self.targetYear:
@@ -91,14 +79,10 @@ class GPRM:
         else:
             return "Something Wrong, now is " + str(self.year) + ", but target is " + str(self.targetYear)
 
-        # self.mape / (len(self.predictionData) - self.windowsize)
     def errorRate(self):
         d = self.predictionData[:self.windowsize]
-        #print("length of prediction data is ", len(self.predictionData))
 
         for k in range(self.windowsize - 1, len(self.predictionData) - 1):
-            #d = self.predictionData[k-3 : k+1]
-            #print("d is ", d)
             for i in range(len(d)):
                 if d[i] == 0:
                     d[i] = 0.01
@@ -108,73 +92,8 @@ class GPRM:
             if self.predictionData[k + 1] < 0:
                 print("waht the fuck?", self.predictionData[k + 1])
             self.mape += abs(predicated - self.predictionData[k + 1]) / self.predictionData[k + 1]
-            #print("predicated is ", predicated, " the corresponding is ", self.predictionData[k + 1])
-            #print("the first one should be 0.0575", self.mape)
             d.append(predicated)
             self.year += 1
-            #d.append(self.predictionData[k+1])
             d = d[1:]
         e = self.mape / (len(self.predictionData) - self.windowsize)
-        #if e < 0:
-         #   print("mape is ", self.mape)
-         #   print("data size minus windowsize is ", (len(self.predictionData) - self.windowsize))
         return e
-
-
-#test = [264.74, 288.78, 317.38, 337.20, 345.86, 403.27, 430.4, 454.26, 482.94, 501.2, 559.42, 592.99, 645.71,
-#       745.97, 821.44, 921.97]
-#t1 = GPRM(test, 1, 1)
-#print(t1.predictWithRM())
-"""
-d = self.predictionData[:self.windowsize]
-        #print("length of prediction data is ", len(self.predictionData))
-
-        for k in range(self.targetYear - self.year):
-            #d = self.predictionData[k-3 : k+1]
-            #print("d is ", d)
-            for i in range(len(d)):
-                if d[i] == 0:
-                    d[i] = 0.01
-            predicated = self.predictWithoutRM(d, self.windowsize) - self.errorPredict
-            #if self.predictionData[k + 1] == 0:
-            #    self.predictionData[k + 1] = 0.01
-            #self.mape += abs(predicated - self.predictionData[k + 1]) / self.predictionData[k + 1]
-            #print("predicated is ", predicated, " the corresponding is ", self.predictionData[k + 1])
-            #print("the first one should be 0.0575", self.mape)
-            d.append(predicated)
-            self.year += 1
-            #d.append(self.predictionData[k+1])
-            d = d[1:]
-
-        if self.year == self.targetYear:
-            return d[-1]
-        else:
-            return "Something Wrong, now is " + str(self.year) + ", but target is " + str(self.targetYear)
-
-
-        #self.mape / (len(self.predictionData) - self.windowsize)
-"""
-
-"""
-        d = self.predictionData[:self.windowsize]
-        #print("length of prediction data is ", len(self.predictionData))
-
-        for k in range(self.windowsize - 1, len(self.predictionData) - 1):
-            #d = self.predictionData[k-3 : k+1]
-            #print("d is ", d)
-            for i in range(len(d)):
-                if d[i] == 0:
-                    d[i] = 0.01
-            predicated = self.predictWithoutRM(d, self.windowsize) - self.errorPredict
-            if self.predictionData[k + 1] == 0:
-                self.predictionData[k + 1] = 0.01
-            self.mape += abs(predicated - self.predictionData[k + 1]) / self.predictionData[k + 1]
-            #print("predicated is ", predicated, " the corresponding is ", self.predictionData[k + 1])
-            #print("the first one should be 0.0575", self.mape)
-            d.append(predicated)
-            self.year += 1
-            #d.append(self.predictionData[k+1])
-            d = d[1:]
-
-        return self.mape / (len(self.predictionData) - self.windowsize)
-"""
