@@ -4,7 +4,7 @@ from GPRM_model import GPRM
 #ca 15 7
 #nm 15 4
 #tx 15 6
-df = pd.read_csv("tx.csv")
+df = pd.read_csv("tx.csv")   #data feeded
 """
 TEACB = df["TEACB"]
 TECCB = df["TECCB"]
