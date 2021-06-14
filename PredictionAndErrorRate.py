@@ -1,4 +1,4 @@
-import pandas as pd
+'$import pandas as pd
 from GPRM_model import GPRM
 #arizona 15 7
 #ca 15 7
