@@ -1,77 +1,75 @@
-# Clean-Energy-Consumption-Prediction-Model
- - Clean-Energy-Consumption-Prediction-Model
-  - Use modified Grey Prediction Model with Rolling Mechanism to predict accurately the clean energy consumption in states in US. 
-   - With data in the past 20 years, the algorithm has an accuracy of above 95%.
+- Clean-Energy-Consumption-Prediction-Model
+- Use modified Grey Prediction Model with Rolling Mechanism to predict accurately the clean energy consumption in states in US. 
+- With data in the past 20 years, the algorithm has an accuracy of above 95%.
 
 - Compete in 2018 The Mathematical Contest in Modeling.
-
-# import pandas as pd
+ - import pandas as pd
   - from GPRM_model import GPRM
    - arizona 15 7
     - ca 15 7
      - nm 15 4
       - tx 15 6
-# df =
+- df =
   -  pd.read_csv
     -  ("tx.csv") 
-# data feeded
+- data feeded
  - TEACB = 
   - df
    - ["TEACB"]
-# TECCB = 
+- TECCB = 
  - df["TECCB"]
-# TEICB =
+- TEICB =
  -  df["TEICB"]
-# TERCB = 
+- TERCB = 
  - df["TERCB"]
-# CLTCB = 
+- CLTCB = 
  - df["CLTCB"]
-# HYTCB =
+- HYTCB =
  -  df["HYTCB"]
-# KSTCB =
+- KSTCB =
  -  df["KSTCB"]
-# LGTCB =
+- LGTCB =
  -  df["LGTCB"]
-# MGTCB = 
+- MGTCB = 
  - df["MGTCB"]
-# NGTCB =
+- NGTCB =
  -  df["NGTCB"]
-# NUETB =
+- NUETB =
 -  df["NUETB"]
-# SOTCB =
+- SOTCB =
 -  df["SOTCB"]
-# WWTCB =
+- WWTCB =
  -  df["WWTCB"]
-# WYTCB =
- -  df["WYTCB"]
+- WYTCB =
+ -  df["WYTCB"]""">`
 
-# SF =
+- SF =
  -  df
   -  ["SF"]
    -   * 0.8
-# SG =
+- SG =
  -  df
   -  ["SG"] 
    -  * 1.2
-# caData = 
+- caData = 
  - [SF, SG]
-# for I in range
+- for I in range
  - (len
   - (caData)):
-# l =
+-    l =
  -     len
   -     (SF)
-#    if
+-    if
  -     i =
   -     =
    -      0:
-# name = 
+-        name = 
  -        "SF"
-# else:
- -        name = 
-  -        "SG"
-# for p in range(len(caData[i])):
--        if p =
+-    else:
+-        name = 
+ -        "SG"
+-    for p in range(len(caData[i])):
+-        if p >=
  -         4:
   -            caData[i][p] = 
    -            (caData[i][p] + 
@@ -80,46 +78,46 @@
       -            caData[i][p - 3] +
        -            caData[i][p - 4]) 
         -            /
-         -            5
-# Predictor = 
+         -            5>
+- Predictor = 
  - GPRM
   - (caData
    - [i]
     - [l - 15:], 
      - 2000,
       -  2050)
-# prediction = 
+- prediction = 
  - Predictor.predictWithRM
   - ()
-# print
+- print
  - ("in 2050, 
   - the predicted number for ", 
    - name, 
     - " is ",
      -  prediction)
-# Predictor =
+- Predictor =
  -  GPRM
   -  (caData
    -  [i]
     -  [l - 15:], 
      -  2000,
       -   2025)
-# prediction =
+- prediction =
  -  Predictor.predictWithRM
   -  ()
-# print
+- print
  - ("in 2025,
   -  the predicted number for ",
    -   name, 
     -   " is ", 
      -   prediction)
-# Predictor.alpha =
+- Predictor.alpha =
  -  0.8
-# errorRate =
+- errorRate =
  -  Predictor.errorRate
   -  ()
-# print
+- print
  - ("for ", 
   - name, 
    - " the error rate is ",
-    -  errorRate)
+    -  errorRate)>
