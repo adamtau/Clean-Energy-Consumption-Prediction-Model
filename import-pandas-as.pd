@@ -1,5 +1,6 @@
-from GPRM_model import GPRM
-arizona 15 7 - ca 15 7
-nm 15 4
-tx 15 6
-df =
+- from GPRM_model import GPRM
+ - arizona 15 7 
+  - ca 15 7
+   - nm 15 4
+    - tx 15 6
+     - df =
