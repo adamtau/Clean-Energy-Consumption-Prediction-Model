@@ -1,13 +1,14 @@
-### Clean-Energy-Consumption-Prediction-Model
+- Clean-Energy-Consumption-Prediction-Model
 - Use modified Grey Prediction Model with Rolling Mechanism to predict accurately the clean energy consumption in states in US. 
 - With data in the past 20 years, the algorithm has an accuracy of above 95%.
+
 - Compete in 2018 The Mathematical Contest in Modeling.
-# import pandas as pd
-- from GPRM_model import GPRM
-- arizona 15 7
- - ca 15 7
-  - nm 15 4
-   - tx 15 6
+ - import pandas as pd
+  - from GPRM_model import GPRM
+   - arizona 15 7
+    - ca 15 7
+     - nm 15 4
+      - tx 15 6
 - df =
   -  pd.read_csv
     -  ("tx.csv") 
